@@ -613,3 +613,27 @@ a { text-decoration: none; }
         font-size: 1rem; /* Diminui levemente a fonte se precisar */
     }
 }
+/* ==============================
+   MOBILE — Carousel com 1 card
+   ============================== */
+@media (max-width: 768px) {
+
+    /* Esconde todos os cards do slide */
+    #projectCarousel .carousel-item .col-md-4 {
+        display: none;
+    }
+
+    /* Mostra apenas o primeiro card */
+    #projectCarousel .carousel-item .col-md-4:first-child {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Centraliza o card */
+    #projectCarousel .project-card {
+        margin: 0 auto;
+    }
+
+}

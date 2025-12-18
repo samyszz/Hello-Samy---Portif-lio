@@ -134,3 +134,68 @@ function triggerGoogleTranslate(lang) {
         headerBtn.innerHTML = `<i class="bi bi-translate"></i> ${lang.toUpperCase()}`;
     }
 }
+/* ==========================================
+   6. CARROSSEL RESPONSIVO (1 card no mobile)
+   ========================================== */
+const carousel = document.querySelector('#projectCarousel');
+
+if (carousel) {
+    const carouselInner = carousel.querySelector('.carousel-inner');
+    const originalItems = Array.from(carouselInner.children);
+
+    function rebuildCarousel() {
+        const isMobile = window.innerWidth < 768;
+
+        carouselInner.innerHTML = '';
+
+        if (isMobile) {
+            // MOBILE → 1 card por slide
+            originalItems.forEach(item => {
+                const cards = item.querySelectorAll('.col-md-4');
+
+                cards.forEach((card, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'carousel-item';
+                    if (carouselInner.children.length === 0) {
+                        slide.classList.add('active');
+                    }
+
+                    const row = document.createElement('div');
+                    row.className = 'row justify-content-center';
+
+                    const col = card.cloneNode(true);
+                    col.classList.remove('col-md-4');
+                    col.classList.add('col-12');
+
+                    row.appendChild(col);
+                    slide.appendChild(row);
+                    carouselInner.appendChild(slide);
+                });
+            });
+        } else {
+            // DESKTOP → estrutura original (3 por slide)
+            originalItems.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === 0) item.classList.add('active');
+                carouselInner.appendChild(item);
+            });
+        }
+    }
+
+    rebuildCarousel();
+    window.addEventListener('resize', rebuildCarousel);
+}
+/* ==========================================
+   7. SKILLS — NÍVEL ALEATÓRIO (>= 83%)
+   Azul = +1 | Amarelo = -1
+   ========================================== */
+const progressBars = document.querySelectorAll('.progress-bar');
+
+progressBars.forEach(bar => {
+    const min = 83;
+    const max = 97;
+
+    const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    bar.style.width = `${randomValue}%`;
+});
