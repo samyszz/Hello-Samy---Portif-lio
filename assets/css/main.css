@@ -577,3 +577,39 @@ a { text-decoration: none; }
         padding-left: 0 !important;
     }
 }
+/* =================================================================
+   CORREÇÃO DE SKILLS QUEBRANDO (Mobile)
+   ================================================================= */
+@media (max-width: 991px) {
+
+    /* 1. Ajusta o container de vidro */
+    .skills-container {
+        /* Reduzimos de 40px para 20px (vertical) e 15px (lateral) */
+        padding: 20px 15px !important; 
+        
+        /* Garante que o container não seja maior que a tela */
+        width: 100% !important; 
+        max-width: 100% !important;
+        
+        /* Evita que qualquer filho saia das bordas arredondadas */
+        overflow: hidden; 
+    }
+
+    /* 2. Força as barras e grupos a caberem no espaço */
+    .skill-group {
+        width: 100% !important;
+        margin-bottom: 15px;
+        box-sizing: border-box; /* O padding não aumenta a largura total */
+    }
+
+    .progress {
+        width: 100% !important; /* Ocupa 100% do espaço DISPONÍVEL, não fixo */
+        max-width: 100% !important;
+    }
+
+    /* 3. Ajuste do título da Skill (Front-end, UI/UX) */
+    .skill-col-header {
+        width: 100%;
+        font-size: 1rem; /* Diminui levemente a fonte se precisar */
+    }
+}
