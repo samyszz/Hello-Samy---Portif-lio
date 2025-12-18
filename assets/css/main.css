@@ -1,0 +1,579 @@
+@import url('./variables.css');
+
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+   ========================================= */
+body {
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    
+    /* CORREÇÃO: Usamos 'background' para permitir gradientes (Light) e cor sólida (Dark) */
+    background: var(--bg-body); 
+    
+    min-height: 100vh;
+    color: var(--text-main);
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+a { text-decoration: none; }
+
+/* =========================================
+   ANIMAÇÕES DE SCROLL (Scroll Reveal)
+   ========================================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   BACKGROUNDS E FORMAS
+   ========================================= */
+.hero-section {
+    /* CORREÇÃO: Variável de background (gradiente ou cor) */
+    background: var(--bg-hero);
+    
+    position: relative;
+    padding-top: 150px;
+    min-height: 100vh;
+    transition: background 0.5s ease;
+}
+
+/* Garante fundo transparente para não tapar o body */
+.main-content {
+    background: transparent !important; 
+}
+
+.bg-shape {
+    position: absolute;
+    background-color: #38b6ff;
+    opacity: 0.23;
+    z-index: 0;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+}
+.shape-1 { top: -10%; left: -5%; width: 500px; height: 500px; }
+.shape-2 { bottom: 10%; right: -10%; width: 400px; height: 400px; }
+
+/* =========================================
+   NAVBAR (HEADER)
+   ========================================= */
+.navbar-suspended {
+    background-color: var(--bg-header);
+    border-radius: 50px;
+    margin: 20px auto;
+    width: 95%; 
+    backdrop-filter: blur(10px);
+    border: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+
+.nav-link {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-primary-light);
+}
+
+/* Botão Baixar CV */
+.btn-cv {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-light);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-cv:hover {
+    transform: scale(1.05);
+    background-color: var(--color-primary-dark);
+    color: #fff;
+}
+
+/* Botão de Dark Mode */
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--color-primary-light);
+    color: var(--color-primary-light);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background-color: var(--color-primary-light);
+    color: #fff;
+}
+
+/* =========================================
+   ELEMENTOS DE TEXTO E BOTÕES
+   ========================================= */
+.hero-title .highlight-blue { color: var(--color-primary-dark); }
+.hero-title .highlight-light { color: var(--color-primary-light); }
+.hero-subtitle { color: var(--color-primary-dark); font-weight: bold; }
+
+.btn-primary-custom {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-light);
+    border-radius: 15px;
+    border: none;
+    padding: 12px 35px;
+    font-weight: bold;
+}
+.btn-outline-custom {
+    background-color: transparent;
+    color: var(--color-primary-light);
+    border: 3px solid var(--color-primary-light);
+    border-radius: 15px;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+
+/* =========================================
+   SOBRE MIM E SKILLS
+   ========================================= */
+.profile-img-container {
+    border-radius: 50%;
+    box-shadow: 10px 10px 30px rgba(57, 101, 239, 0.2);
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border: 5px solid #fff;
+}
+.profile-img-container img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.about-title, .section-title { color: var(--color-primary-dark); font-weight: bold; }
+
+/* Skills Container (Vidro) */
+.skills-container {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skill-col-header {
+    background-color: var(--bg-skill-header);
+    color: var(--color-primary-light);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.skill-group {
+    transition: transform 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+.skill-group:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255,255,255,0.3);
+}
+
+.skill-item label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+}
+
+.progress {
+    height: 12px;
+    background-color: var(--skill-yellow); 
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.progress-bar {
+    background-color: var(--skill-blue); 
+    position: relative;
+    overflow: hidden;
+}
+/* Efeito de brilho na barra */
+.skill-group:hover .progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: shiny 1.5s infinite;
+}
+@keyframes shiny { 100% { left: 100%; } }
+
+/* =========================================
+   PROJETOS (CARDS)
+   ========================================= */
+.project-card {
+    /* CORREÇÃO: Usa variável para alternar entre gradiente e cor sólida */
+    background: var(--bg-card); 
+    border: 2px solid var(--border-card);
+    
+    border-radius: 20px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
+    
+    /* Garante que o texto mude de cor no dark mode */
+    color: var(--text-main);
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.project-link-box {
+    background-color: var(--bg-link-box);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: auto;
+}
+.project-link-box a {
+    color: var(--color-primary-dark);
+    font-weight: bold;
+}
+
+/* Setas do Carrossel */
+.carousel-control-prev-icon, .carousel-control-next-icon { background-size: 50%; }
+.carousel-control-prev, .carousel-control-next { width: 5%; opacity: 0.8; }
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer-suspended {
+    background-color: var(--bg-header);
+    border-radius: 50px 50px 0 0;
+    margin: 50px 5% 0 5%;
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.contact-card {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    display: inline-block;
+    padding: 20px 40px;
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.footer-icon {
+    font-size: 1.5rem;
+    color: #4362ec;
+    transition: transform 0.2s;
+}
+.footer-icon:hover { transform: translateY(-3px); }
+
+/* =========================================
+   SNAKE TIMELINE
+   ========================================= */
+.journey-section { padding: 50px 0; overflow: hidden; }
+.journey-container { max-width: 1000px; margin: 0 auto; }
+
+.snake-item {
+    position: relative; z-index: 2; text-align: center;
+    flex: 1; padding: 0 10px;
+}
+.snake-circle, .timeline-dot-large {
+    background: var(--color-primary-light); color: #fff;
+    border: 4px solid #fff; position: relative; z-index: 2;
+    box-shadow: 0 0 10px rgba(57, 101, 239, 0.3);
+}
+.snake-circle {
+    width: 50px; height: 50px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.5rem; margin: 0 auto 15px auto;
+}
+.timeline-dot-large {
+    width: 30px; height: 30px; border-radius: 50%;
+    margin: 10px auto 25px auto;
+}
+.snake-box {
+    background: var(--bg-process-box); 
+    border-radius: 15px; padding: 15px;
+    font-size: 0.9rem; font-weight: 600; 
+    color: var(--color-primary-dark);
+    transition: transform 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+/* Mobile */
+@media (max-width: 991px) {
+    .journey-row {
+        display: flex; flex-direction: column;
+        border-left: 3px dashed var(--color-primary-light);
+        margin-left: 20px; padding-left: 30px; padding-bottom: 30px;
+    }
+    .journey-line { display: none !important; } 
+    .snake-circle, .timeline-dot-large { position: absolute; left: -26px; margin: 0; }
+    .snake-item { margin-bottom: 20px; text-align: left; }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .journey-row {
+        display: flex; justify-content: space-between !important; 
+        position: relative; margin-bottom: 120px; 
+    }
+    .journey-row:last-child { margin-bottom: 0; }
+    
+    .snake-item { flex: 0 0 20% !important; max-width: 20% !important; text-align: center; }
+
+    .journey-line {
+        display: block !important; position: absolute; 
+        top: 25px; left: 10%; width: 80%; height: 3px;
+        border-top: 3px dashed var(--color-primary-light); z-index: 0; 
+    }
+
+    /* Conectores Curvos */
+    #ponto-1-fim::after {
+        content: ''; position: absolute; top: 25px; left: 50%; width: 70%; height: 145px; 
+        border-top: 3px dashed var(--color-primary-light);
+        border-right: 3px dashed var(--color-primary-light);
+        border-radius: 0 30px 0 0; z-index: -1;
+    }
+    #ponto-2-fim::after {
+        content: ''; position: absolute; top: 25px; right: 50%; width: 70%; height: 145px;
+        border-top: 3px dashed var(--color-primary-light);
+        border-left: 3px dashed var(--color-primary-light);
+        border-radius: 30px 0 0 0; z-index: -1;
+    }
+}
+
+/* Animação Cascata */
+.journey-row.hidden { opacity: 1 !important; transform: none !important; }
+.journey-row.hidden .snake-item {
+    opacity: 0; transform: translateY(-50px); 
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+.journey-row.show .snake-item { opacity: 1; transform: translateY(0); }
+.journey-row.show .snake-item:nth-of-type(1) { transition-delay: 0.1s; }
+.journey-row.show .snake-item:nth-of-type(2) { transition-delay: 0.3s; }
+.journey-row.show .snake-item:nth-of-type(3) { transition-delay: 0.5s; }
+.journey-row.show .snake-item:nth-of-type(4) { transition-delay: 0.7s; }
+.journey-row.show .snake-item:nth-of-type(5) { transition-delay: 0.9s; }
+
+.journey-row.hidden .journey-line { width: 0 !important; opacity: 0; }
+.journey-row.show .journey-line {
+    width: 80% !important; opacity: 1;
+    transition: width 1.5s ease 0.2s, opacity 0.5s ease 0.2s; 
+}
+
+/* =========================================
+   DARK MODE OVERRIDES (Fix Texto)
+   ========================================= */
+/* Força Bootstrap text classes a ficarem BRANCAS no Dark Mode */
+[data-theme="dark"] .text-dark,
+[data-theme="dark"] .lead {
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* Garante que os textos pequenos dentro dos cards fiquem legíveis */
+[data-theme="dark"] .small.text-dark {
+    color: var(--text-muted) !important;
+}
+/* ==============================
+   DARK MODE — Skills & Contato
+   Roxo frio translúcido
+   ============================== */
+[data-theme="dark"] .skills-container,
+[data-theme="dark"] .contact-card {
+    background: rgba(140, 120, 255, 0.12);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(160, 150, 255, 0.25);
+    box-shadow:
+        0 0 30px rgba(120, 100, 255, 0.15),
+        0 0 60px rgba(90, 70, 200, 0.08);
+}
+/* ==============================
+   MOBILE — Header & Layout
+   ============================== */
+@media (max-width: 768px) {
+
+    /* HEADER mais estreita */
+    .navbar-suspended {
+        width: 88%;
+        margin: 12px auto;
+        border-radius: 40px;
+        padding: 6px 10px;
+    }
+
+    .navbar-brand img {
+        height: 48px;
+    }
+
+    /* Corpo do site centralizado */
+    .main-content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Garante que sections fiquem centralizadas */
+    section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    section > .container {
+        max-width: 92%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+/* =================================================================
+   RESPONSIVIDADE E MOBILE (Adicione ao final do seu CSS)
+   ================================================================= */
+
+@media (max-width: 991px) {
+    /* --- 1. CONFIGURAÇÕES GERAIS DE TEXTO E LAYOUT --- */
+    body {
+        text-align: center; /* Centraliza todos os textos do site */
+    }
+
+    section {
+        padding: 60px 0; /* Reduz padding das seções */
+        overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+    }
+
+    /* Centraliza títulos e subtítulos explicitamente */
+    .section-title, .hero-title, .hero-subtitle, p {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* --- 2. HEADER (NAVBAR) CENTRALIZADA --- */
+    .navbar-suspended {
+        width: 90% !important; /* Largura segura para mobile */
+        margin: 15px auto !important; /* Margem automática nas laterais */
+        
+        /* Truque para centralizar elemento fixed perfeitamente */
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        
+        padding: 10px 20px;
+        border-radius: 30px;
+    }
+
+    /* Ajuste do Menu Hambúrguer (se houver) ao abrir */
+    .navbar-collapse {
+        background: var(--bg-header); /* Fundo sólido para leitura */
+        margin-top: 15px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-nav {
+        align-items: center; /* Centraliza os links do menu */
+    }
+
+    /* --- 3. HERO SECTION & IMAGENS --- */
+    .hero-section {
+        padding-top: 140px; /* Espaço para não bater na navbar */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Centraliza imagens e containers de perfil */
+    .profile-img-container {
+        margin: 30px auto; /* Margem auto centraliza blocos */
+        width: 250px; /* Leve redução para caber melhor */
+        height: 250px;
+    }
+
+    /* --- 4. AJUSTE DOS SHAPES (FORMAS DE FUNDO) --- */
+    /* Reduz as formas para não ocuparem a tela toda no celular */
+    .bg-shape {
+        opacity: 0.15; /* Mais suave no mobile */
+    }
+    .shape-1 {
+        width: 200px; height: 200px;
+        top: 0; left: -10%;
+    }
+    .shape-2 {
+        width: 150px; height: 150px;
+        bottom: 0; right: -5%;
+    }
+
+    /* --- 5. BOTÕES E CARDS --- */
+    /* Força botões a ficarem no centro */
+    .d-flex {
+        justify-content: center !important;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    /* Ajuste dos Cards de Projeto */
+    .project-card {
+        margin-bottom: 30px;
+        text-align: center; /* Garante texto centralizado no card */
+    }
+
+    .project-link-box {
+        text-align: center;
+    }
+}
+
+/* =================================================================
+   AJUSTES FINOS PARA TELAS MUITO PEQUENAS (Iphone SE, etc)
+   ================================================================= */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem; /* Reduz tamanho da fonte do título */
+    }
+    
+    .navbar-suspended {
+        width: 95% !important; /* Aproveita mais espaço */
+        padding: 8px 15px;
+    }
+
+    .btn-primary-custom, .btn-outline-custom {
+        width: 100%; /* Botões ocupam largura total para facilitar o toque */
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    /* Centraliza os itens da Snake Timeline que sobraram */
+    .snake-item {
+        justify-content: center;
+        text-align: center;
+        padding-left: 0 !important;
+    }
+}

@@ -1,0 +1,68 @@
+:root {
+    /* --- Cores Base --- */
+    --color-primary-dark: #1800ad;
+    --color-primary-light: #3965ef;
+    --color-secondary-grad: #8425c7;
+    --color-text-light: #e2fbfa;
+    
+    /* --- Cores de UI --- */
+    --bg-header: rgba(57, 101, 239, 0.16);
+    --bg-dropdown: #a3baff;
+    --bg-skill-header: rgba(12, 192, 223, 0.16);
+    --bg-process-box: rgba(12, 192, 223, 0.30);
+    --bg-link-box: #cbd7ff;
+    
+    /* --- Skills --- */
+    --skill-blue: #0cc0df; 
+    --skill-yellow: #ffcb00;
+
+    /* --- Fonte --- */
+    --font-main: 'Fredoka', sans-serif;
+
+    /* =========================================
+       BASE DO LIGHT MODE (Seus Gradientes aqui)
+       ========================================= */
+    
+    /* 1. Fundo do resto do site (135 graus) */
+    /* Cores: #e2fbfa, #e2fbfa, #cbf7f7, #fff9e0 */
+    --bg-body: linear-gradient(135deg, #e2fbfa, #e2fbfa, #cbf7f7, #fff9e0);
+    
+    /* 2. Fundo do começo do site (Circular) */
+    /* Cores: #fff9e0, #cbf7f7, #e2fbfa, #e2fbfa */
+    --bg-hero: radial-gradient(circle at center, #fff9e0 0%, #cbf7f7 50%, #e2fbfa 100%);
+    
+    /* 3. Cards coloridos */
+    --bg-card: linear-gradient(135deg, #fff9e0, #e2fbfa, #cbf7f7);
+    --border-card: #addfe4;
+    
+    /* 4. Textos */
+    --bg-surface: #ffffff;
+    --text-main: #2b2b2b;
+    --text-muted: #6c757d;
+}
+
+/* =========================================
+   DARK MODE (Cores Sólidas)
+   ========================================= */
+[data-theme="dark"] {
+    /* Removemos os gradientes e colocamos a cor sólida escura */
+    --bg-body: #020b1c; 
+    --bg-hero: #020b1c; 
+    
+    /* Card Escuro */
+    --bg-card: #030812;
+    --border-card: #2b4591;
+
+    --bg-surface: #0a1530;
+    --text-main: #ffffff; 
+    --text-muted: #d1d1d1; 
+
+    /* Identidade */
+    --color-primary-dark: #8ba5ff; 
+    
+    /* UI Dark */
+    --bg-header: rgba(2, 11, 28, 0.95);
+    --bg-dropdown: #1c2a4d;
+    --bg-process-box: #0e1e40;
+    --bg-link-box: #2b4591;
+}
