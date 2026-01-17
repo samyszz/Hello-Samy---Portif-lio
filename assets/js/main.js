@@ -192,7 +192,7 @@ if (carousel) {
 const progressBars = document.querySelectorAll('.progress-bar');
 
 progressBars.forEach(bar => {
-    const min = 83;
+    const min = 89;
     const max = 97;
 
     const randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
